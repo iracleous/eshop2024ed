@@ -40,7 +40,11 @@ public class Eshop2024ed {
    
    List<Product> products = eshopService.getProducts();
    
-   System.out.println(products);
+  
+   products.forEach(cproduct -> System.out.println(cproduct.getName()));
+  // products.forEach( System.out::println);        
+   
+  // System.out.println(products);
    
 
     
