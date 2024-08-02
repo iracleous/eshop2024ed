@@ -4,7 +4,10 @@
  */
 package gr.codehub.eshoped.eshop2024ed.services;
 
+ 
 import gr.codehub.eshoped.eshop2024ed.exception.ProductException;
+import gr.codehub.eshoped.eshop2024ed.exception.InvalidInputException;
+import gr.codehub.eshoped.eshop2024ed.exception.NotFoundException;
 import gr.codehub.eshoped.eshop2024ed.model.Product;
 import java.util.List;
 
@@ -16,4 +19,7 @@ public interface EshopService {
     Product createProduct(String name);
     Long saveProduct(Product product)throws ProductException;
     List<Product> getProducts();
+    
+    
+    Product findProductByName(String productName)throws InvalidInputException, NotFoundException;
 }

@@ -13,12 +13,12 @@ import java.util.Scanner;
  *
  * @author DimitrisIracleous
  */
-public class UserInterface {
+public class FrontEnd {
     
     
     private final UserSelections userSelections;
 
-    public UserInterface(UserSelections userSelections) {
+    public FrontEnd(UserSelections userSelections) {
         this.userSelections = userSelections;
     }
     

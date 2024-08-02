@@ -33,16 +33,19 @@ public class ProductRepository implements Repository<Product, Long>{
         } catch (Exception e) {
             log.debug("An exception occured");
         }
-        return Optional.empty();  }
+        return Optional.empty();  
+    }
 
     @Override
     public List<Product> findAll() {
-       TypedQuery<Product> query = entityManager.createQuery("from " + getEntityClassName(), getEntityClass());
-        return query.getResultList();    }
+        TypedQuery<Product> query = 
+               entityManager.createQuery("from " + getEntityClassName(), getEntityClass());
+        return query.getResultList();    
+    }
 
     @Override
     public Optional<Product> save(Product t) {
-          try {
+        try {
             entityManager.getTransaction().begin();
             entityManager.persist(t);
             entityManager.getTransaction().commit();
@@ -69,6 +72,22 @@ public class ProductRepository implements Repository<Product, Long>{
         }
         return false;   
     }
+ 
+ 
+   public List<Product> findAll(String productName, double price) {
+       TypedQuery<Product> query = 
+               entityManager.createQuery("from " + getEntityClassName()
+                       + " where name  like :productName "
+                       + " and price < :price"
+                       , getEntityClass())
+               .setParameter("productName", productName)
+               .setParameter("price", price);
+        return query.getResultList();    
+   }
+  
+    
+    
+    
     
     
     private Class<Product> getEntityClass() {
