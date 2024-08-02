@@ -9,9 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import java.util.Date;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,18 +19,16 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class Basket {
-   @Id
-   @GeneratedValue(strategy= GenerationType.IDENTITY)
-   private long id;
+public class BasketProduct {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     
-   private Date date;
+    @ManyToOne
+    private Basket basket;
    
-   @ManyToOne
-   private Customer customer;
-   
-   @OneToMany(mappedBy ="basket")
-   private List<BasketProduct> basketProducts;
-   
-   
+    @ManyToOne
+    private Product product;
+    
+    private int quantity;
 }
