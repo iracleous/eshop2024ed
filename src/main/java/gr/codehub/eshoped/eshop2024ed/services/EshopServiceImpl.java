@@ -18,12 +18,17 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class EshopServiceImpl implements EshopService{
-     private final ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public EshopServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Override
     public Product createProduct(String name) {
       Product product =   new Product();

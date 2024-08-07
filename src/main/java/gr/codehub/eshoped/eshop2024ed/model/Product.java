@@ -5,6 +5,8 @@
 package gr.codehub.eshoped.eshop2024ed.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +33,8 @@ public class Product {
     private double price;
     private int  inventoryQuantity;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
  
     @OneToMany(mappedBy ="product")
     private List<BasketProduct> basketProducts;

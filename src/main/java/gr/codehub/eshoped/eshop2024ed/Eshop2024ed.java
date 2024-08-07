@@ -7,14 +7,20 @@ import gr.codehub.eshoped.eshop2024ed.exception.InvalidInputException;
 import gr.codehub.eshoped.eshop2024ed.exception.NotFoundException;
 import gr.codehub.eshoped.eshop2024ed.exception.ProductException;
 import gr.codehub.eshoped.eshop2024ed.jpa.JpaUtil;
+import gr.codehub.eshoped.eshop2024ed.model.Category;
+import gr.codehub.eshoped.eshop2024ed.model.Customer;
 import gr.codehub.eshoped.eshop2024ed.model.Product;
 import gr.codehub.eshoped.eshop2024ed.repositories.ProductRepository;
 import gr.codehub.eshoped.eshop2024ed.services.EshopService;
 import gr.codehub.eshoped.eshop2024ed.services.EshopServiceImpl;
 import jakarta.persistence.EntityManager;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -24,8 +30,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Eshop2024ed {
 
-    public static void main(String[] args) {
+ 
+  public static void main(String[] args) { 
 
+ 
+
+        
+        
         log.info("CRM application starting...");
         EntityManager em = JpaUtil.getEntityManager();
 
@@ -36,10 +47,16 @@ public class Eshop2024ed {
         //product table population
         try {
             Product product = eshopService.createProduct("chips");
+            System.out.println("<000------------------");
+            System.out.println(product.getCategory());
+            product.setCategory(Category.SNACK);
             product.setPrice(1);
             eshopService.saveProduct(product);
             Product product2 = eshopService.createProduct("choco");
             eshopService.saveProduct(product2);
+            
+            Customer customer = new Customer();
+            System.out.println(""+customer);
 
         } catch (ProductException ex) {
             Logger.getLogger(Eshop2024ed.class.getName()).log(Level.SEVERE, null, ex);

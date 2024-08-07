@@ -23,6 +23,11 @@ public class ProductRepository implements Repository<Product, Long>{
         this.entityManager = entityManager;
     }
 
+    /**
+     *
+     * @param id the id of the requested product
+     * @return Optional<Product>
+     */
     @Override
     public Optional<Product> findById(Long id) {
         try {

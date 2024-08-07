@@ -30,5 +30,5 @@ public class BasketProduct {
     @ManyToOne
     private Product product;
     
-    private int quantity;
+    private Integer purchaseQuantity;
 }
